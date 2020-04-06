@@ -1,0 +1,155 @@
+WindowManager:
+    MainWindow:
+    SecondWindow:
+
+
+<Button>:
+    font_size:20
+    color: 1,1,1,1
+    size_hint:0.2,0.06
+    background_color: (0.27, 0.55, 0.64,1)
+
+<MainWindow>
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'awh_systems_background.png'
+    name: "main"
+
+    Button:
+        pos_hint: {"x":0.4,"y":0.3}
+        text:"Login"
+        on_release:
+            app.root.current = "second" # if name.text == "ziya" and pas.text =="gngr" else "main"
+            root.manager.transition.direction = "left"
+
+    Image:
+        source: 'awh_systems_title.png'
+        pos_hint: {"x":0.16,"y":0.8}
+        size_hint: 0.8,0.1
+
+    Image:
+        source: 'awh_systems_logo.png'
+        size_hint: 0.2,0.34
+        pos_hint: {"left":0,"top":0.99}
+
+    TextInput:
+        id: pas
+        font_size:15
+        pos_hint: {"x":0.4,"y":0.37}
+        size_hint: 0.2,0.06
+        multiline: False
+        password: True
+
+    TextInput:
+        id: name
+        font_size:15
+        pos_hint: {"x":0.4,"y":0.44}
+        size_hint: 0.2,0.06
+        multiline: False
+
+
+<SecondWindow>
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'awh_systems_background.png'
+    name: "second"
+
+    Image:
+        source: 'awh_systems_title.png'
+        pos_hint: {"x":0.16,"y":0.88}
+        size_hint: 0.8,0.1
+
+
+
+    Button:
+        pos_hint: {"x":0,"y":0}
+        text:"Cancel"
+        on_press: app.stop() 
+
+    Button:
+        pos_hint: {"x":0,"y":0.06}
+        text:"Settings"
+
+    Button:
+        pos_hint: {"x":0,"y":0.12}
+        text:"Monitor"
+        on_release: root.monitor_page()
+
+    Button:
+        pos_hint: {"x":0.05,"y":0.18}
+        text:"Manage Routes"
+        size_hint:0.15,0.06
+        font_size:12
+        on_release: root.manage_routes()
+
+    Button:
+        pos_hint: {"x":0.05,"y":0.24}
+        text:"Manage Items"
+        size_hint:0.15,0.06
+        font_size:12
+        on_release: root.manage_item()
+
+    Button:
+        pos_hint: {"x":0,"y":0.3}
+        text:"Management"
+
+    Button:
+        pos_hint: {"x":0.05,"y":0.36}
+        text:"Calibration Results"
+        size_hint:0.15,0.06
+        font_size:12
+        on_release: root.calibration_report()
+
+    Button:
+        pos_hint: {"x":0.05,"y":0.42}
+        text:"Start Calibration"
+        size_hint:0.15,0.06
+        font_size:12
+        on_release: root.start_calibration()
+
+    Button:
+        pos_hint: {"x":0.05,"y":0.48}
+        text:"Test For Calibration"
+        size_hint:0.15,0.06
+        font_size:12
+        on_release: root.testforcali()
+
+    Button:
+        pos_hint: {"x":0,"y":0.54}
+        text:"Calibration"
+
+    Label:
+        text: "Menu"
+        font_size:20
+        pos_hint: {"x":0,"y":0.6}
+        size_hint: 0.2,0.06
+        color: 0,0,0,1
+
+    Image:
+        source: 'awh_systems_logo.png'
+        size_hint: 0.2,0.34
+        pos_hint: {"left":0,"top":0.99}
+
+    Camera:
+        id: camera
+        resolution: (1280, 720)
+        play: True
+
+        pos_hint: {"x":0,"y":0}
+
+
+
+<TestForCalibration>:
+    Label:
+        text: "Calibration Test Successful!Click the Start Calibration button."
+        size_hint: 1, 0.2
+        pos_hint: {"x":0, "top":1}
+        color: 0,0,0,1
+
+
+
+

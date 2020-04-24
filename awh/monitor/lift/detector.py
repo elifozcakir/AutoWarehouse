@@ -43,8 +43,15 @@ class LiftDetector():
         return self.lift
     
     def updateLiftStat(self, frame):
-
-        keypoints=frame.findEllipse()
+        
+        hsv= frame.hsvFrame()
+        red = hsv.clone().redFilter()
+        red = red.img
+        blue = hsv.clone().blueFilter()
+        blue= blue.img
+        img= red + blue
+        img= 255-img
+        keypoints=frame.findEllipse(img)
         
         if len(keypoints)<2:
             print("Not detected")
